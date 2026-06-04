@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -36,7 +37,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 
 @Composable
 fun MainMenu() {
@@ -104,13 +104,11 @@ fun MenuScreen(onScreenSelected: (String) -> Unit) {
     }
 }
 
-
 @Composable
 fun ArticleScreen(onBack: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-
         Button(
             onClick = onBack,
             modifier = Modifier.padding(8.dp)
@@ -118,26 +116,23 @@ fun ArticleScreen(onBack: () -> Unit) {
             Text("← Назад к меню")
         }
 
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
-                    .background(Color(0xFF6750A4))
             ) {
-                Text(
-                    text = "Здесь будет ваше изображение",
-                    color = Color.White,
-                    modifier = Modifier.align(Alignment.Center)
+                Image(
+                    painter = painterResource(R.drawable.image1),
+                    contentDescription = "Изображение для статьи",
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop
                 )
             }
-
 
             Column(
                 modifier = Modifier.padding(16.dp)
@@ -166,7 +161,6 @@ fun ArticleScreen(onBack: () -> Unit) {
     }
 }
 
-
 @Composable
 fun TaskManagerScreen(onBack: () -> Unit) {
     Column(
@@ -174,11 +168,9 @@ fun TaskManagerScreen(onBack: () -> Unit) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-
         Button(onClick = onBack) {
             Text("← Назад к меню")
         }
-
 
         Column(
             modifier = Modifier
@@ -187,7 +179,6 @@ fun TaskManagerScreen(onBack: () -> Unit) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
             Box(
                 modifier = Modifier
                     .size(100.dp)
@@ -219,7 +210,6 @@ fun TaskManagerScreen(onBack: () -> Unit) {
     }
 }
 
-
 @Composable
 fun QuadrantScreen(onBack: () -> Unit) {
     Column(
@@ -227,18 +217,15 @@ fun QuadrantScreen(onBack: () -> Unit) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-
         Button(onClick = onBack) {
             Text("← Назад к меню")
         }
 
         Spacer(modifier = Modifier.height(8.dp))
 
-
         Column(
             modifier = Modifier.weight(1f)
         ) {
-
             Row(
                 modifier = Modifier.weight(1f)
             ) {
@@ -255,7 +242,6 @@ fun QuadrantScreen(onBack: () -> Unit) {
                     modifier = Modifier.weight(1f)
                 )
             }
-
 
             Row(
                 modifier = Modifier.weight(1f)
@@ -312,7 +298,6 @@ fun QuadrantCard(
     }
 }
 
-
 @Composable
 fun InfoScreen(onBack: () -> Unit) {
     Column(
@@ -322,7 +307,6 @@ fun InfoScreen(onBack: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
         Button(
             onClick = onBack,
             modifier = Modifier.align(Alignment.Start)
